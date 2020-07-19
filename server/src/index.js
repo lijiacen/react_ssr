@@ -7,13 +7,16 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 import Home from "../src/container/home";
 
+app.use(express.static("public")); //发现请求是个静态文件，则去public根目录下面找
+
 const content = renderToString(<Home />);
 
 app.get("/", (req, res) =>
   res.send(`<html>
   <head></head>
   <body>
-    ${content}
+      <div id="root">${content}</div>
+    <script src="/bundle.js"></script>
   </body>
 </html>`)
 );
