@@ -11,13 +11,11 @@ import Routes from "../Routers";
 app.use(express.static("public")); //发现请求是个静态文件，则去public根目录下面找
 
 app.get("/", (req, res) => {
-  const content = renderToString(() => {
-    return (
-      <StaticRouter location={req.path} context={{}}>
-        <Routes />
-      </StaticRouter>
-    );
-  });
+  const content = renderToString(
+    <StaticRouter location={req.path} context={{}}>
+      {Routes}
+    </StaticRouter>
+  );
 
   res.send(`<html>
   <head></head>
