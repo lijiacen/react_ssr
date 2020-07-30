@@ -1,16 +1,11 @@
 import React from "react";
+import Header from "../../components/Header";
 
 const Login = () => {
   return (
     <div>
+      <Header />
       <div>login</div>
-      <button
-        onClick={() => {
-          alert(123);
-        }}
-      >
-        Login
-      </button>
     </div>
   );
 };
