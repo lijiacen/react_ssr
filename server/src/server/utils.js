@@ -4,17 +4,23 @@ import { StaticRouter } from "react-router-dom";
 import Routes from "../Routers";
 import React from "react";
 
+import getStore from "../store";
+import { Provider } from "react-redux";
+
 export const render = (req) => {
   const content = renderToString(
-    <StaticRouter location={req.path} context={{}}>
-      {Routes}
-    </StaticRouter>
+    <Provider store={getStore()}>
+      <StaticRouter location={req.path} context={{}}>
+        {Routes}
+      </StaticRouter>
+    </Provider>
   );
-  return `<html>
-  <head></head>
-  <body>
-      <div id="root">${content}</div>
-    <script src="/bundle.js"></script>
-  </body>
-</html>`;
+  return `
+    <html>
+      <head></head>
+      <body>
+        <div id="root">${content}</div>
+        <script src="/bundle.js"></script>
+      </body>
+    </html>`;
 };
