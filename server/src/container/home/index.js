@@ -20,7 +20,10 @@ class Home extends React.Component {
   }
   //服务器端渲染不执行
   componentDidMount() {
-    this.props.getHomeList();
+    //防止注水后的重复加载
+    if (this.props.newsList.length === 0) {
+      this.props.getHomeList();
+    }
   }
 }
 

@@ -4,7 +4,7 @@ const port = 3001;
 import { render } from "./utils";
 import { matchRoutes } from "react-router-config";
 import routes from "../Routers";
-import getStore from "../store";
+import { getStore } from "../store";
 
 app.use(express.static("public")); //发现请求是个静态文件，则去public根目录下面找
 
