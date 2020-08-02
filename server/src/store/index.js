@@ -6,8 +6,9 @@ import { reducer as homeReducer } from "../container/home/store";
 const reducer = combineReducers({
   home: homeReducer
 });
-const getStore = () => {
+export const getStore = () => {
   return createStore(reducer, applyMiddleware(thunk));
 };
-
-export default getStore;
+export const getClientStore = (defaultState) => {
+  return createStore(reducer, defaultState, applyMiddleware(thunk));
+};
