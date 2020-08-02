@@ -1,26 +1,25 @@
 //使用 react-dom/server renderToString编译react dom变成字符串，直接插入html中
 import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom";
-import Routes from "../Routers";
+import { StaticRouter, Route } from "react-router-dom";
 import React from "react";
-
-import getStore from "../store";
 import { Provider } from "react-redux";
 
-export const render = (req) => {
+export const render = (req, store, routes) => {
   const content = renderToString(
-    <Provider store={getStore()}>
+    <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
-        {Routes}
+        {routes.map((route) => (
+          <Route key={route.path} {...route} />
+        ))}
       </StaticRouter>
     </Provider>
   );
   return `
-    <html>
-      <head></head>
-      <body>
-        <div id="root">${content}</div>
-        <script src="/bundle.js"></script>
-      </body>
-    </html>`;
+      <html>
+        <head></head>
+        <body>
+          <div id="root">${content}</div>
+          <script src="/bundle.js"></script>
+        </body>
+      </html>`;
 };
