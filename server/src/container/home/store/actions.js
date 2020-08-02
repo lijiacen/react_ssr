@@ -9,13 +9,19 @@ const changeList = (list) => {
   };
 };
 
-export const getHomeList = () => {
+export const getHomeList = (server) => {
+  //服务端和客户端请求不同处理
+  let url = "";
+  if (server) {
+    url = "http://47.95.113.63/ssr/api/news.json?secret=" + "PP87ANTIPIRATE";
+  } else {
+    url = "/api/news.json?secret=" + "PP87ANTIPIRATE";
+  }
+
   return (dispatch) => {
-    return axios
-      .get("http://47.95.113.63/ssr/api/news.json?secret=" + "PP87ANTIPIRATE")
-      .then((res) => {
-        let list = res.data.data;
-        dispatch(changeList(list));
-      });
+    return axios.get(url).then((res) => {
+      let list = res.data.data;
+      dispatch(changeList(list));
+    });
   };
 };
