@@ -1,6 +1,6 @@
-import axios from "axios";
-
 import { CHANGE_HOME_LIST } from "./constants";
+import serverAxios from "../../../server/request";
+import clientAxios from "../../../client/request";
 
 const changeList = (list) => {
   return {
@@ -11,15 +11,11 @@ const changeList = (list) => {
 
 export const getHomeList = (server) => {
   //服务端和客户端请求不同处理
-  let url = "";
-  if (server) {
-    url = "http://47.95.113.63/ssr/api/news.json?secret=" + "PP87ANTIPIRATE";
-  } else {
-    url = "/api/news.json?secret=" + "PP87ANTIPIRATE";
-  }
+  let url = "/api/news.json?secret=" + "PP87ANTIPIRATE";
+  let request = server ? serverAxios : clientAxios;
 
   return (dispatch) => {
-    return axios.get(url).then((res) => {
+    return request.get(url).then((res) => {
       let list = res.data.data;
       dispatch(changeList(list));
     });
