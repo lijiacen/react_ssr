@@ -11,12 +11,7 @@ class Home extends React.Component {
     });
   }
   render() {
-    return (
-      <div>
-        <Header />
-        {this.getList()}
-      </div>
-    );
+    return <div>{this.getList()}</div>;
   }
   //服务器端渲染不执行
   componentDidMount() {
