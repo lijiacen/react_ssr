@@ -18,7 +18,7 @@ app.use(
 );
 
 app.get("*", (req, res) => {
-  const store = getStore();
+  const store = getStore(req);
   //拿到异步数据，并填充到store中，解决服务端componentDidMount不执行的问题
 
   //store里面填充什么，需要结合当前用户请求地址和路由做判断
