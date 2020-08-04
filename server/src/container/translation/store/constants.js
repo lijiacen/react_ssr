@@ -1,0 +1,1 @@
+export const CHANGE_TRAN_LIST = "TRAN/CHANGE_TRAN_LIST";

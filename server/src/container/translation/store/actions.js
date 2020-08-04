@@ -1,20 +1,21 @@
-import { CHANGE_HOME_LIST } from "./constants";
+import { CHANGE_TRAN_LIST } from "./constants";
 import { secret } from "../../../util/util";
 
 const changeList = (value) => {
   return {
-    type: CHANGE_HOME_LIST,
+    type: CHANGE_TRAN_LIST,
     value
   };
 };
 
-export const getHomeList = () => {
-  //服务端和客户端请求不同处理
-  let url = `/api/news.json?${secret}`;
-
+export const getTranList = () => {
+  let url = `/api/translations.json?${secret}`;
   return (dispatch, getState, axiosInstance) => {
     return axiosInstance.get(url).then((res) => {
-      let list = res.data.data;
+      let list = [];
+      if (res.data.success) {
+        list = res.data.data;
+      }
       dispatch(changeList(list));
     });
   };

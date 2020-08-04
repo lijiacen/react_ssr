@@ -52,11 +52,3 @@ export const logout = () => {
     });
   };
 };
-// export const translations = () => {
-//   let url = `/api/translations.json?${secret}`;
-//   return (dispatch, getState, axiosInstance) => {
-//     return axiosInstance.get(url).then((res) => {
-//       console.log(res);
-//     });
-//   };
-// };

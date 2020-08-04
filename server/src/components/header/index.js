@@ -13,7 +13,7 @@ class Header extends React.Component {
           <div onClick={this.props.handleLoginClick}>登录</div>
         ) : (
           <>
-            <Link to="/login1">翻译列表</Link>
+            <Link to="/translation">翻译列表</Link>
             <br />
             <div onClick={this.props.handleLogoutClick}>退出</div>
           </>
