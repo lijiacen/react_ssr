@@ -1,12 +1,12 @@
-import { CHANGE_HOME_LIST } from "./constants";
+import { CHANGE_TRAN_LIST } from "./constants";
 const defaultState = {
-  newsList: []
+  tranList: []
 };
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case CHANGE_HOME_LIST:
-      return { ...state, newsList: action.value };
+    case CHANGE_TRAN_LIST:
+      return { ...state, tranList: action.value };
     default:
       return state;
   }

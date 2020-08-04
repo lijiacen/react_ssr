@@ -1,5 +1,5 @@
 import Home from "./container/home";
-import Login from "./container/login";
+import Translation from "./container/translation";
 import App from "./App";
 
 //嵌套路由+二级路由
@@ -16,9 +16,10 @@ export default [
         loadData: Home.loadData
       },
       {
-        path: "/login",
+        path: "/translation",
+        component: Translation,
         exact: true,
-        component: Login
+        loadData: Translation.loadData
       }
     ]
   }
