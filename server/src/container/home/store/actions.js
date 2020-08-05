@@ -1,5 +1,4 @@
 import { CHANGE_HOME_LIST } from "./constants";
-import { secret } from "../../../util/util";
 
 const changeList = (value) => {
   return {
@@ -10,12 +9,13 @@ const changeList = (value) => {
 
 export const getHomeList = () => {
   //服务端和客户端请求不同处理
-  let url = `/api/news.json?${secret}`;
+  let url = `/api/news.json`;
 
   return (dispatch, getState, axiosInstance) => {
     return axiosInstance.get(url).then((res) => {
-      let list = res.data.data;
-      dispatch(changeList(list));
+      if (res.data.success) {
+        dispatch(changeList(res.data.data));
+      }
     });
   };
 };

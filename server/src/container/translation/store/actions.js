@@ -1,5 +1,4 @@
 import { CHANGE_TRAN_LIST } from "./constants";
-import { secret } from "../../../util/util";
 
 const changeList = (value) => {
   return {
@@ -9,7 +8,7 @@ const changeList = (value) => {
 };
 
 export const getTranList = () => {
-  let url = `/api/translations.json?${secret}`;
+  let url = `/api/translations.json`;
   return (dispatch, getState, axiosInstance) => {
     return axiosInstance.get(url).then((res) => {
       let list = [];

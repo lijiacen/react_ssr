@@ -118,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _con
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"axios\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n  baseURL: \"/\"\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (instance);\n\n//# sourceURL=webpack:///./src/client/request.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"axios\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ \"./src/util/index.js\");\n\n\nvar instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n  baseURL: \"/\",\n  params: {\n    secret: _util__WEBPACK_IMPORTED_MODULE_1__[\"default\"].secret\n  }\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (instance);\n\n//# sourceURL=webpack:///./src/client/request.js?");
 
 /***/ }),
 
@@ -142,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getHeaderInfo\", function() { return getHeaderInfo; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"login\", function() { return login; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"logout\", function() { return logout; });\n/* harmony import */ var _util_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../util/util */ \"./src/util/util.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/components/header/store/constants.js\");\n\n\n\nvar changeLogin = function changeLogin(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_1__[\"CHANGE_LOGIN\"],\n    value: value\n  };\n};\n\nvar getHeaderInfo = function getHeaderInfo() {\n  var url = \"/api/isLogin.json?\".concat(_util_util__WEBPACK_IMPORTED_MODULE_0__[\"secret\"]);\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      if (res.data.success) {\n        dispatch(changeLogin(res.data.data.login));\n      }\n    });\n  };\n};\n\nvar doLogin = function doLogin(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_1__[\"DO_LOGIN\"],\n    value: value\n  };\n};\n\nvar login = function login() {\n  var url = \"/api/login.json?\".concat(_util_util__WEBPACK_IMPORTED_MODULE_0__[\"secret\"]);\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      if (res.data.success) {\n        dispatch(doLogin(true));\n      }\n    });\n  };\n};\n\nvar doLogout = function doLogout(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_1__[\"DO_LOGOUT\"],\n    value: value\n  };\n};\n\nvar logout = function logout() {\n  var url = \"/api/logout.json?\".concat(_util_util__WEBPACK_IMPORTED_MODULE_0__[\"secret\"]);\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      dispatch(doLogout(false));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/components/header/store/actions.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getHeaderInfo\", function() { return getHeaderInfo; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"login\", function() { return login; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"logout\", function() { return logout; });\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ \"./src/components/header/store/constants.js\");\n\n\nvar changeLogin = function changeLogin(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_0__[\"CHANGE_LOGIN\"],\n    value: value\n  };\n};\n\nvar getHeaderInfo = function getHeaderInfo() {\n  var url = \"/api/isLogin.json\";\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      if (res.data.success) {\n        dispatch(changeLogin(res.data.data.login));\n      }\n    });\n  };\n};\n\nvar doLogin = function doLogin(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_0__[\"DO_LOGIN\"],\n    value: value\n  };\n};\n\nvar login = function login() {\n  var url = \"/api/login.json\";\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      if (res.data.success) {\n        dispatch(doLogin(true));\n      }\n    });\n  };\n};\n\nvar doLogout = function doLogout(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_0__[\"DO_LOGOUT\"],\n    value: value\n  };\n};\n\nvar logout = function logout() {\n  var url = \"/api/logout.json\";\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      dispatch(doLogout(false));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/components/header/store/actions.js?");
 
 /***/ }),
 
@@ -202,7 +202,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getHomeList\", function() { return getHomeList; });\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ \"./src/container/home/store/constants.js\");\n/* harmony import */ var _util_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/util */ \"./src/util/util.js\");\n\n\n\nvar changeList = function changeList(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_0__[\"CHANGE_HOME_LIST\"],\n    value: value\n  };\n};\n\nvar getHomeList = function getHomeList() {\n  //服务端和客户端请求不同处理\n  var url = \"/api/news.json?\".concat(_util_util__WEBPACK_IMPORTED_MODULE_1__[\"secret\"]);\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      var list = res.data.data;\n      dispatch(changeList(list));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/container/home/store/actions.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getHomeList\", function() { return getHomeList; });\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ \"./src/container/home/store/constants.js\");\n\n\nvar changeList = function changeList(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_0__[\"CHANGE_HOME_LIST\"],\n    value: value\n  };\n};\n\nvar getHomeList = function getHomeList() {\n  //服务端和客户端请求不同处理\n  var url = \"/api/news.json\";\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      if (res.data.success) {\n        dispatch(changeList(res.data.data));\n      }\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/container/home/store/actions.js?");
 
 /***/ }),
 
@@ -262,7 +262,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getTranList\", function() { return getTranList; });\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ \"./src/container/translation/store/constants.js\");\n/* harmony import */ var _util_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/util */ \"./src/util/util.js\");\n\n\n\nvar changeList = function changeList(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_0__[\"CHANGE_TRAN_LIST\"],\n    value: value\n  };\n};\n\nvar getTranList = function getTranList() {\n  var url = \"/api/translations.json?\".concat(_util_util__WEBPACK_IMPORTED_MODULE_1__[\"secret\"]);\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      var list = [];\n\n      if (res.data.success) {\n        list = res.data.data;\n      }\n\n      dispatch(changeList(list));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/container/translation/store/actions.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getTranList\", function() { return getTranList; });\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ \"./src/container/translation/store/constants.js\");\n\n\nvar changeList = function changeList(value) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_0__[\"CHANGE_TRAN_LIST\"],\n    value: value\n  };\n};\n\nvar getTranList = function getTranList() {\n  var url = \"/api/translations.json\";\n  return function (dispatch, getState, axiosInstance) {\n    return axiosInstance.get(url).then(function (res) {\n      var list = [];\n\n      if (res.data.success) {\n        list = res.data.data;\n      }\n\n      dispatch(changeList(list));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/container/translation/store/actions.js?");
 
 /***/ }),
 
@@ -322,7 +322,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _uti
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"axios\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\n\nvar serverAxios = function serverAxios(req) {\n  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n    baseURL: \"http://47.95.113.63/ssr\",\n    headers: {\n      cookie: req.get(\"cookie\") || \"\"\n    }\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (serverAxios);\n\n//# sourceURL=webpack:///./src/server/request.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"axios\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ \"./src/util/index.js\");\n\n\n\nvar serverAxios = function serverAxios(req) {\n  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n    baseURL: \"http://47.95.113.63/ssr\",\n    headers: {\n      cookie: req.get(\"cookie\") || \"\"\n    },\n    params: {\n      secret: _util__WEBPACK_IMPORTED_MODULE_1__[\"default\"].secret\n    }\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (serverAxios);\n\n//# sourceURL=webpack:///./src/server/request.js?");
 
 /***/ }),
 
@@ -350,15 +350,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/util/util.js":
-/*!**************************!*\
-  !*** ./src/util/util.js ***!
-  \**************************/
-/*! exports provided: secret */
+/***/ "./src/util/index.js":
+/*!***************************!*\
+  !*** ./src/util/index.js ***!
+  \***************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"secret\", function() { return secret; });\nvar secret = \"secret=PP87ANTIPIRATE\";\n\n//# sourceURL=webpack:///./src/util/util.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nvar secret = \"PP87ANTIPIRATE\";\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  secret: secret\n});\n\n//# sourceURL=webpack:///./src/util/index.js?");
 
 /***/ }),
 
