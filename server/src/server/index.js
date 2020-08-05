@@ -33,7 +33,13 @@ app.get("*", (req, res) => {
     }
   });
   Promise.all(promises).then(() => {
-    res.send(render(req, store, routes));
+    let context = {};
+    let html = render(req, store, routes, context);
+    //404
+    if (context.notFound) {
+      res.status(404); //修改状态码
+    }
+    res.send(html);
   });
 });
 
