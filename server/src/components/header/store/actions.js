@@ -1,4 +1,3 @@
-import { secret } from "../../../util/util";
 import { CHANGE_LOGIN, DO_LOGIN, DO_LOGOUT } from "./constants";
 
 const changeLogin = (value) => {
@@ -9,7 +8,7 @@ const changeLogin = (value) => {
 };
 
 export const getHeaderInfo = () => {
-  let url = `/api/isLogin.json?${secret}`;
+  let url = `/api/isLogin.json`;
   return (dispatch, getState, axiosInstance) => {
     return axiosInstance.get(url).then((res) => {
       if (res.data.success) {
@@ -27,7 +26,7 @@ const doLogin = (value) => {
 };
 
 export const login = () => {
-  let url = `/api/login.json?${secret}`;
+  let url = `/api/login.json`;
   return (dispatch, getState, axiosInstance) => {
     return axiosInstance.get(url).then((res) => {
       if (res.data.success) {
@@ -45,7 +44,7 @@ const doLogout = (value) => {
 };
 
 export const logout = () => {
-  let url = `/api/logout.json?${secret}`;
+  let url = `/api/logout.json`;
   return (dispatch, getState, axiosInstance) => {
     return axiosInstance.get(url).then((res) => {
       dispatch(doLogout(false));

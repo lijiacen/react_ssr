@@ -1,6 +1,11 @@
 import axios from "axios";
+import util from "../util";
 
 const instance = axios.create({
-  baseURL: "/"
+  baseURL: "/",
+  params: {
+    secret: util.secret
+  }
 });
+
 export default instance;
