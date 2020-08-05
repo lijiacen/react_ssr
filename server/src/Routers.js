@@ -1,5 +1,6 @@
 import Home from "./container/home";
 import Translation from "./container/translation";
+import NotFound from "./container/not_found";
 import App from "./App";
 
 //嵌套路由+二级路由
@@ -20,6 +21,9 @@ export default [
         component: Translation,
         exact: true,
         loadData: Translation.loadData
+      },
+      {
+        component: NotFound
       }
     ]
   }
