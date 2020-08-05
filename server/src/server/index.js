@@ -6,6 +6,7 @@ import { matchRoutes } from "react-router-config";
 import routes from "../Routers";
 import { getStore } from "../store";
 import proxy from "express-http-proxy";
+import e from "express";
 
 app.use(express.static("public")); //发现请求是个静态文件，则去public根目录下面找
 app.use(
@@ -35,11 +36,17 @@ app.get("*", (req, res) => {
   Promise.all(promises).then(() => {
     let context = {};
     let html = render(req, store, routes, context);
-    //404
-    if (context.notFound) {
+
+    //重定向
+    if (context.action === "REPLACE") {
+      res.redirect(301, context.url);
+    } else if (context.notFound) {
+      //404
       res.status(404); //修改状态码
+      res.send(html);
+    } else {
+      res.send(html);
     }
-    res.send(html);
   });
 });
 

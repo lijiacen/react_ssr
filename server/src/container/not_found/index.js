@@ -1,7 +1,7 @@
 import React from "react";
 
 class NotFound extends React.Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { staticContext } = this.props;
     staticContext && (staticContext.notFound = true);
   }
