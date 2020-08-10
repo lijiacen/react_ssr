@@ -30,7 +30,11 @@ app.get("*", (req, res) => {
   //循环matchRoutes，把匹配上的路由中，自定义静态方法loadData()都执行一边
   matchedRoutes.map((mr) => {
     if (mr.route.loadData) {
-      promises.push(mr.route.loadData(store));
+      const promise = new Promise((resovle, reject) => {
+        //无论数据请求是否有误，正确走then，错误走catch。resovle都会被正确触发
+        mr.route.loadData(store).then(resovle).catch(resovle);
+      });
+      promises.push(promise);
     }
   });
   Promise.all(promises).then(() => {
