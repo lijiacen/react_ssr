@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getHomeList } from "./store/actions";
 import styles from "./test.css";
+import withStyle from "../../withStyles";
 
 class Home extends React.Component {
   getList() {
@@ -12,12 +13,6 @@ class Home extends React.Component {
   }
   render() {
     return <div className={styles.test}>{this.getList()}</div>;
-  }
-
-  UNSAFE_componentWillMount() {
-    if (this.props.staticContext) {
-      this.props.staticContext.css.push(styles._getCss());
-    }
   }
 
   //服务器端渲染不执行
@@ -39,7 +34,10 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-const HomeExport = connect(mapStateToProps, mapDispatchToProps)(Home);
+const HomeExport = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyle(Home, styles));
 
 HomeExport.loadData = store => {
   //这个函数，负责在服务器端渲染之前，把这个路由需要的数据提前加载好
