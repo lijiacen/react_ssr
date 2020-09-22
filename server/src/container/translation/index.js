@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 class Tran extends React.Component {
   getList() {
     const { tranList } = this.props;
-    return tranList.map((l) => {
+    return tranList.map(l => {
       return <div key={l.id}>{l.title}</div>;
     });
   }
@@ -23,19 +23,21 @@ class Tran extends React.Component {
   }
 }
 
-Tran.loadData = (store) => {
-  //这个函数，负责在服务器端渲染之前，把这个路由需要的数据提前加载好
-  return store.dispatch(getTranList());
-};
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { tranList: state.tran.tranList, isLogin: state.header.isLogin };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     getTranList() {
       dispatch(getTranList());
     }
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Tran);
+const TranExport = connect(mapStateToProps, mapDispatchToProps)(Tran);
+
+TranExport.loadData = store => {
+  //这个函数，负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+  return store.dispatch(getTranList());
+};
+
+export default TranExport;

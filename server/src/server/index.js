@@ -28,7 +28,7 @@ app.get("*", (req, res) => {
   const promises = [];
 
   //循环matchRoutes，把匹配上的路由中，自定义静态方法loadData()都执行一边
-  matchedRoutes.map((mr) => {
+  matchedRoutes.map(mr => {
     if (mr.route.loadData) {
       const promise = new Promise((resovle, reject) => {
         //无论数据请求是否有误，正确走then，错误走catch。resovle都会被正确触发
@@ -38,9 +38,8 @@ app.get("*", (req, res) => {
     }
   });
   Promise.all(promises).then(() => {
-    let context = {};
+    let context = { css: [] };
     let html = render(req, store, routes, context);
-
     //重定向
     if (context.action === "REPLACE") {
       res.redirect(301, context.url);
