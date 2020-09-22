@@ -2,11 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login, logout } from "./store/actions";
+import styles from "./test.css";
 
 class Header extends React.Component {
+  UNSAFE_componentWillMount() {
+    if (this.props.staticContext) {
+      this.props.staticContext.css.push(styles._getCss());
+    }
+  }
   render() {
     return (
-      <div>
+      <div className={styles.test}>
         <Link to="/">首页</Link>
         <br />
         {!this.props.isLogin ? (
@@ -23,10 +29,10 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { isLogin: state.header.isLogin };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     handleLoginClick() {
       dispatch(login());
@@ -36,4 +42,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
